@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c26-0s-NFw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Map View Controller-->
+        <!--CharityNow-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainMapViewController" customModule="CharityNow" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,10 +21,15 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Pzq-w5-eu8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0Z-6w-Xpr">
-                                <rect key="frame" x="16" y="617" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0Z-6w-Xpr">
+                                <rect key="frame" x="5" y="629" width="50" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="g4O-Z9-PGh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <state key="normal" title="Zoom">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="zoomIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KQb-6O-LWz"/>
                                 </connections>
@@ -34,16 +39,66 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pzq-w5-eu8" secondAttribute="bottom" id="3Or-qU-thF"/>
                             <constraint firstItem="Pzq-w5-eu8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Is1-IO-IhQ"/>
+                            <constraint firstItem="D0Z-6w-Xpr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="YML-Gx-mRa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pzq-w5-eu8" secondAttribute="trailing" id="ooZ-DO-DJL"/>
                             <constraint firstItem="Pzq-w5-eu8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pIm-HJ-Qp7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="D0Z-6w-Xpr" secondAttribute="bottom" constant="5" id="uwA-pf-XY9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="CharityNow" id="Uza-c4-Gh3">
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="eba-x6-Ygc">
+                            <connections>
+                                <segue destination="LG7-jA-k1B" kind="show" identifier="searchTapped" id="E7f-e7-U3m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Pzq-w5-eu8" id="j0a-R2-FyQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="aiy-h9-Yry">
+            <objects>
+                <viewController id="LG7-jA-k1B" customClass="SearchViewController" customModule="CharityNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="avG-xX-2dL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UID-be-1Dc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Twv-Md-r6W">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="2MV-oT-BhA">
+                            <connections>
+                                <segue destination="dkK-yB-Jkg" kind="unwind" identifier="cancelSearch" unwindAction="unwindToMainMapWithSegue:" id="ZAK-Pv-FqE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9Z-ee-34R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dkK-yB-Jkg" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1876" y="132.68365817091455"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q1U-6z-qJ9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c26-0s-NFw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DzJ-Tv-sGG">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ne9-lm-bdA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qYe-4W-xLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
